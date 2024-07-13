@@ -37,21 +37,6 @@ await server.vite.ready();
 
 server.decorate("genAI", new GoogleGenerativeAI(process.env.API_KEY));
 
-server.post("/api/generate/code", async (req, reply) => {
-  const model = server.genAI.getGenerativeModel({
-    model: "gemini-1.5-pro",
-    tools: [
-      {
-        codeExecution: {},
-      },
-    ],
-  });
-
-  const result = await model.generateContent(req.body.prompt);
-
-  reply.send(result);
-});
-
 server.post("/api/explain/code", async (req, reply) => {
   const model = server.genAI.getGenerativeModel({
     model: "gemini-1.5-pro",
