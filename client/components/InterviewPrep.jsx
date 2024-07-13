@@ -34,6 +34,7 @@ export const InterviewPrep = () => {
     const randomIndex = Math.floor(Math.random() * PROBLEMS.length);
     const randomProblem = PROBLEMS[randomIndex];
     setProblem(randomProblem);
+    setAnswer("");
   }
 
   async function checkAnswer() {
@@ -76,6 +77,7 @@ export const InterviewPrep = () => {
           placeholder={problem}
           showPrintMargin={false}
           theme="solarized_dark"
+          value={answer}
           wrapEnabled={true}
           onChange={onChange}
         />
