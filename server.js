@@ -71,4 +71,4 @@ server.post("/api/explain/code", async (req, reply) => {
   reply.send(result.response.text());
 });
 
-await server.listen({ port: 3000 });
+await server.listen({ port: process.env.PORT || 3000 });
