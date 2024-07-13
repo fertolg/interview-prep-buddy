@@ -1,4 +1,5 @@
 {
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "node server.js --dev",
@@ -10,14 +11,20 @@
     "lint": "eslint . --ext .js,.jsx --fix"
   },
   "dependencies": {
+    "@fastify/env": "^4.4.0",
     "@fastify/one-line-logger": "^1.2.0",
-    "@fastify/vite": "^6.0.5",
     "@fastify/react": "^0.6.0",
+    "@fastify/vite": "^6.0.5",
+    "@google/generative-ai": "^0.14.1",
+    "ace-builds": "^1.35.2",
     "fastify": "^4.24.3",
     "history": "^5.3.0",
+    "ldrs": "^1.0.2",
     "minipass": "^7.0.4",
     "react": "^18.2.0",
+    "react-ace": "^12.0.0",
     "react-dom": "^18.2.0",
+    "react-markdown": "^9.0.1",
     "react-router-dom": "^6.20.0",
     "unihead": "^0.0.6",
     "valtio": "^1.12.0"

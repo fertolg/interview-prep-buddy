@@ -1,6 +1,8 @@
+import { InterviewPrep } from "../components/InterviewPrep";
+
 export function getMeta() {
   return {
-    title: "Welcome to @fastify/react!",
+    title: "Interview prep buddy",
   };
 }
 
@@ -8,7 +10,7 @@ export default function Index() {
   const message = "Welcome to @fastify/react!";
   return (
     <>
-      <p>{message}</p>
+      <InterviewPrep />
     </>
   );
 }
