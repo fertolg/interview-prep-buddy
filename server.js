@@ -3,6 +3,9 @@ import Fastify from "fastify";
 import FastifyVite from "@fastify/vite";
 import FastifyEnv from "@fastify/env";
 
+const port = process.env.PORT || 3000;
+const host = "RENDER" in process.env ? `0.0.0.0` : `localhost`;
+
 const server = Fastify({
   logger: {
     transport: {
@@ -71,4 +74,4 @@ server.post("/api/explain/code", async (req, reply) => {
   reply.send(result.response.text());
 });
 
-await server.listen({ port: process.env.PORT || 3000 });
+await server.listen({ host: host, port: port });
