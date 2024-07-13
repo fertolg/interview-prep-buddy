@@ -98,3 +98,28 @@ button.primary[disabled] {
   flex: 1 1;
   margin: 0;
 }
+
+@media only screen and (max-width: 600px) {
+  button {
+    border-radius: 24px;
+    height: 48px;
+    padding: 8px 12px;
+  }
+
+  .intro {
+    margin: 8px;
+    padding: 16px;
+  }
+
+  .main-content {
+    flex-direction: column;
+  }
+
+  .footer-bar {
+    flex-wrap: wrap;
+  }
+
+  .footer-bar .problem {
+    flex: 1 0 100%;
+  }
+}
