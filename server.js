@@ -1,4 +1,4 @@
-import { GoogleGenerativeAI } from "@google/generative-ai";
+import { GoogleGenAI } from "@google/genai";
 import Fastify from "fastify";
 import FastifyVite from "@fastify/vite";
 import FastifyEnv from "@fastify/env";
@@ -35,28 +35,29 @@ await server.register(FastifyVite, {
 
 await server.vite.ready();
 
-server.decorate("genAI", new GoogleGenerativeAI(process.env.API_KEY));
+server.decorate("genAI", new GoogleGenAI({ apiKey: process.env.API_KEY }));
 
 server.post("/api/explain/code", async (req, reply) => {
-  const model = server.genAI.getGenerativeModel({
-    model: "gemini-1.5-pro",
-    tools: [
+  const response = await server.genAI.models.generateContent({
+    model: "gemini-3.6-flash",
+    contents: [
+      { text: "Given the following problem:" },
+      { text: req.body.problem },
       {
-        codeExecution: {},
+        text: "Assess if the following code satisfies the problem. If it does, just send congratulations and explain what the code is doing, do not include any followup. If it doesn't, point out where there are deficiencies in the code without providing a solution yourself.",
       },
+      { executableCode: { code: req.body.code, language: "python" } },
     ],
+    config: {
+      tools: [
+        {
+          codeExecution: {},
+        },
+      ],
+    },
   });
 
-  const result = await model.generateContent([
-    { text: "Given the following problem:" },
-    { text: req.body.problem },
-    {
-      text: "Assess if the following code satisfies the problem. If it does, just send congratulations and explain what the code is doing, do not include any followup. If it doesn't, point out where there are deficiencies in the code without providing a solution yourself.",
-    },
-    { executableCode: { code: req.body.code, language: "python" } },
-  ]);
-
-  reply.send(result.response.text());
+  reply.send(response.text);
 });
 
 await server.listen({ host: host, port: port });
