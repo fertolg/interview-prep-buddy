@@ -1,8 +1,7 @@
-import routes from '/:routes.js'
-import create from '/:create.jsx'
+import { createRoutes } from '@fastify/react/server'
 
-export default { 
-  context: import('/:context.js'), 
-  routes,
-  create,
+export default {
+  routes: createRoutes(import('$app/routes.js')),
+  create: import('$app/create.jsx'),
+  context: import('$app/context.js'),
 }

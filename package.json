@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "build": "npm run build:client && npm run build:server",
-    "build:client": "vite build --outDir dist/client --ssrManifest",
-    "build:server": "vite build --outDir dist/server --ssr /index.js",
+    "build": "vite build --app",
     "dev": "node server.js --dev",
     "devinstall": "zx ../../devinstall.mjs -- node server.js --dev",
     "lint": "eslint . --ext .js,.jsx --fix",
@@ -14,34 +12,29 @@
     "test:watch": "vitest"
   },
   "dependencies": {
-    "@fastify/env": "^4.4.0",
-    "@fastify/one-line-logger": "^1.2.0",
-    "@fastify/react": "^0.6.0",
-    "@fastify/vite": "^6.0.5",
+    "@fastify/env": "^7.0.0",
+    "@fastify/one-line-logger": "^2.2.0",
+    "@fastify/react": "^1.2.2",
+    "@fastify/vite": "^10.0.0",
     "@google/genai": "^2.21.0",
-    "ace-builds": "^1.35.2",
-    "fastify": "^4.24.3",
-    "history": "^5.3.0",
+    "ace-builds": "^1.44.0",
+    "fastify": "^5.12.3",
     "ldrs": "^1.0.2",
-    "minipass": "^7.0.4",
-    "react": "^18.2.0",
-    "react-ace": "^12.0.0",
-    "react-dom": "^18.2.0",
-    "react-markdown": "^9.0.1",
-    "react-router-dom": "^6.20.0",
-    "unihead": "^0.0.6",
-    "valtio": "^1.12.0"
+    "react": "^19.2.8",
+    "react-ace": "^15.0.0",
+    "react-dom": "^19.2.8",
+    "react-markdown": "^10.1.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.9.1",
     "@testing-library/react": "^16.3.3",
     "@testing-library/user-event": "^14.6.7",
-    "@vitejs/plugin-react": "^4.2.0",
+    "@vitejs/plugin-react": "^5.2.0",
     "jsdom": "^29.1.1",
     "postcss": "^8.4.31",
     "postcss-nesting": "^12.0.2",
     "postcss-preset-env": "^7.7.1",
-    "vite": "^5.0.2",
+    "vite": "^8.2.2",
     "vitest": "^4.1.11"
   }
 }

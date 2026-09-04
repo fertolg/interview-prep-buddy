@@ -20,7 +20,6 @@ export async function buildApp({ vite = true } = {}) {
       properties: {
         API_KEY: {
           type: "string",
-          default: undefined,
         },
       },
     },
@@ -35,7 +34,7 @@ export async function buildApp({ vite = true } = {}) {
     await server.vite.ready();
   }
 
-  server.decorate("genAI", new GoogleGenAI({ apiKey: process.env.API_KEY }));
+  server.decorate("genAI", new GoogleGenAI({ apiKey: server.config.API_KEY }));
 
   server.post("/api/explain/code", async (req, reply) => {
     const response = await server.genAI.models.generateContent({
